@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
+const morgan = require("morgan");
 
 //bring in route
 const {getPosts} = require('./routes/posts');
 
+
+//bring in route
+app.use(morgan("dev"));
 
 app.get('/',getPosts);
 
