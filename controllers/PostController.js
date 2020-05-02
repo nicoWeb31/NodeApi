@@ -1,16 +1,30 @@
 const Post = require('../models/ModelsPosts')
 
+
+
+// =============================================================================
+// get post
+// =============================================================================
 exports.getPosts = (req,res) => {
-    res.json({
-        posts :[
-            {title:'first post'},
-            {title:'seconde post'},
-            
-        ]
-    })
+    
+const posts = Post.find()
+//select what you want whith select mmethode
+.select("_id title body")
+.then((posts) =>{
+    res.json({posts})
+    //res.status(200).json({posts})
+
+})
+.catch(err=>console.log(err))
+
+
+    
 };
 
 
+// =============================================================================
+// creats post
+// =============================================================================
 exports.creatPost =(req,res)=> {
     const post = new  Post(req.body);
     console.log("creat post",(req.body))
