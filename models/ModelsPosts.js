@@ -15,3 +15,5 @@ const postShema = new mongoose.Schema({
         maxlength:1500
     }
 });
+
+module.exports = mongoose.model("Post",postShema);

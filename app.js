@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose =require('mongoose');
+const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const expressValidator = require("express-validator");
 dotenv.config();
 
 //bring in route
@@ -18,11 +20,11 @@ mongoose.connection.on("error",err =>{
 });
 
 
-
-//bring in route
+//midlware
+app.use(bodyParser.json());
 app.use(morgan("dev"));
-
 app.use('/',postRoutes);
+app.use(expressValidator());
 
 const port = process.env.PORT || 8080;
 app.listen(port,()=>(console.log(`a node js api is listening on port : ${port}`)))
