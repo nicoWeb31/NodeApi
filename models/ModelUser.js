@@ -49,6 +49,10 @@ userShema.virtual('password')
 
 //methode 
 userShema.methods ={
+    //test matche plaintText and hash_pass in db
+    auhtenticate : function(plainText){
+        return this.encryptPass(plainText) === this.hashed_password
+    },
     encryptPass : function(password){
         if(!password) return "";
         try{
