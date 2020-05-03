@@ -18,7 +18,7 @@ exports.createPostValoidator = (req,res,next) =>{
     const errors = req.validationErrors();
     if(errors){
         const firstError = errors.map(error => error.msg)[0];
-        return res.status(400).json({error : firstError})
+        return res.status(400).json ({error : firstError})
     }
 
     //preoced to next middleware
@@ -39,7 +39,7 @@ exports.UserSinUpValidator = (req,res,next) =>{
     //check for email
     req.check("email", "email must be between 3 to 34 caracteres")
     .matches(/.+\@.+\..+/)
-    .whithMessage("email must contain an @")
+    .withMessage("email must contain an @")
     .isLength({
         min:5,
         max:60
@@ -47,19 +47,19 @@ exports.UserSinUpValidator = (req,res,next) =>{
 
     //check for pass
     req.check("password","password is required").notEmpty();
-    req.check("password")
+    req.check('password')
     .isLength({min : 6})
-    .whithMessage("password must contain 6 caratcters minimum")
+    .withMessage("password must contain 6 caratcters minimum")
     .matches(/\d/)
-    .whithMessage("password must contain a number")
+    .withMessage("password must contain a number")
 
     //check for error
 
   //check errors
     const errors = req.validationErrors()
     if(errors){
-        const firstError = errors.map((error)=> error.msg)[0]
-        return res.satuts(400).json({error : firstError})
+        const firstError = errors.map(error=> error.msg)[0]
+        return res.status(400).json({error : firstError})
     }
 
     //preoced to next middleware

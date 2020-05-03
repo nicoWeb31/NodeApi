@@ -7,5 +7,5 @@ exports.sinUp = async(req,res)=>{
     })
    let  user = await new User(req.body)
     await user.save()
-    res.status(200).json({message : "sinup success with module"})
+    res.status(200).json({message : "signup success with module"})
 }

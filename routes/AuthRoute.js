@@ -8,7 +8,7 @@ const router = express.Router();
 //const postController
 
 
-router.post("/sinup",UserSinUpValidator,sinUp);
+router.post("/singup",UserSinUpValidator,sinUp);
 
 
 
