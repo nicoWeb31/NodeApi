@@ -28,4 +28,13 @@ const userShema = new mongoose.Schema({
 })
 
 
+//virtual field, additional field for a given model
+//don't persist in db
+
+const virtualUserShema = userShema.virtual('password')
+.set()
+.get()
+
+
+
 module.exports = mongoose.model("User" ,userShema )
