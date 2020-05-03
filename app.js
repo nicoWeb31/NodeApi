@@ -9,6 +9,7 @@ dotenv.config();
 
 //bring in route
 const postRoutes = require('./routes/PostRouter');
+const authRoute = require('./routes/AuthRoute')
 
 
 //bdd 
@@ -21,10 +22,13 @@ mongoose.connection.on("error",err =>{
 
 
 //midlware
-app.use(bodyParser.json());
 app.use(morgan("dev"));
-app.use('/',postRoutes);
+app.use(bodyParser.json());
 app.use(expressValidator());
+
+
+app.use('/',postRoutes);
+app.use("/",authRoute);
 
 const port = process.env.PORT || 8080;
 app.listen(port,()=>(console.log(`a node js api is listening on port : ${port}`)))

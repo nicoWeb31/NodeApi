@@ -11,7 +11,7 @@ const postShema = new mongoose.Schema({
     body :{
         type :String,
         required : "Content is required",
-        minlength :50,
+        minlength :4,
         maxlength:1500
     }
 });
