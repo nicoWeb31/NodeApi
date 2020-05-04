@@ -2,7 +2,7 @@ const express = require('express');
 //const postController = require('../controllers/PostController');
 //destrucutring postController
 const {sinUp,singIn,singOut} = require('../controllers/auth');
-const {userById} = require('../controllers/UserController');
+const {UserById} = require('../controllers/UserController');
 
 const {UserSinUpValidator}  = require('../validator');
 
@@ -16,7 +16,7 @@ router.get("/singout",singOut);
 
 
 //any route contening :useId , our app will first execute userbyID
-router.param('id',userById);
+router.param('user_id',UserById)
 
 
 
