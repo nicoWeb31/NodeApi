@@ -1,7 +1,8 @@
 const User = require('../models/ModelUser');
 const jwt = require('jsonwebtoken');
 // const bodyParser = require("body-parser");
-require('dotenv').config()
+require('dotenv').config();
+const expressJwt = require('express-jwt');
 
 
 
@@ -64,7 +65,12 @@ exports.singOut =(req,res)=>{
 }
 
 
-
+exports.requireSingin = expressJwt({
+    //if is token is valid,express jwt append the verified users id
+    //in auth key to the request object
+    secret : process.env.JWT_SECRET,
+    userProperty:"auth"
+})
 
 
 
