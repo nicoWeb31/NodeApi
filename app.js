@@ -10,7 +10,9 @@ dotenv.config();
 
 //bring in route
 const postRoutes = require('./routes/PostRouter');
-const authRoute = require('./routes/AuthRoute')
+const authRoute = require('./routes/AuthRoute');
+const userRoute = require('./routes/UserRoute');
+
 
 
 //bdd 
@@ -36,6 +38,8 @@ app.use(function (err, req, res, next) {
 
 app.use('/',postRoutes);
 app.use("/",authRoute);
+app.use("/",userRoute);
+
 
 const port = process.env.PORT || 8080;
 app.listen(port,()=>(console.log(`a node js api is listening on port : ${port}`)))

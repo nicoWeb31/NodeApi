@@ -3,7 +3,7 @@ const express = require('express');
 //destrucutring postController
 const {getPosts,creatPost} = require('../controllers/PostController');
 const {requireSingin} = require('../controllers/auth');
-const {userById} = require('../controllers/UserController');
+const {UserById} = require('../controllers/UserController');
 
 const validator  = require('../validator')
 
@@ -17,7 +17,7 @@ router.post("/post",requireSingin, validator.createPostValoidator, creatPost);
 
 
 //any route contening :useId , our app will first execute userbyID
-// router.param("userId",userById);
+router.param('userId',UserById)
 
 
 module.exports = router;

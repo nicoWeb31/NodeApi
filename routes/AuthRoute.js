@@ -16,7 +16,7 @@ router.get("/singout",singOut);
 
 
 //any route contening :useId , our app will first execute userbyID
-router.param('user_id',UserById)
+router.param('userId',UserById)
 
 
 
