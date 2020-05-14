@@ -6,12 +6,26 @@ var cookieParser = require('cookie-parser');
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const expressValidator = require("express-validator");
+const cors = require('cors');
+const fs = require('fs');
 dotenv.config();
+
 
 //bring in route
 const postRoutes = require('./routes/PostRouter');
 const authRoute = require('./routes/AuthRoute');
 const userRoute = require('./routes/UserRoute');
+
+//apiDoc
+app.get('/',(req,res)=>{
+  fs.readFile('docs/apiDocs.json',(err,data)=>{
+    if(err){
+      res.status(400).json({error:err})
+    }
+    const docs = JSON.parse(data)
+    res.json(docs);
+  })
+})
 
 
 
@@ -29,6 +43,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
+app.use(core());
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
       res.status(401).send('invalid token...');

@@ -11,7 +11,7 @@ const router = express.Router();
 //const postController
 
 
-router.get("/",getPosts);
+router.get("/posts",getPosts);
 router.post("/post/new/:userId",requireSingin,creatPost,validator.createPostValoidator);
 router.get("/posts/:userId",postController.postsByUser);
 router.delete("post/:postById",requireSingin,isPoster,deletePost);
